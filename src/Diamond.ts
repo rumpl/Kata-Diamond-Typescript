@@ -1,17 +1,47 @@
-export default class Complex {
-  constructor(public real:number, public im:number) {
+export default class DiamondBuilder {
+  constructor() {
 
   }
 
-  add(other: Complex) : Complex {
-    return new Complex( other.real + this.real, other.im + this.im);
+  private pad(letter:string, idx:number):string {
+    var num = letter.charCodeAt(0) - 65;
+
+    var ret = '';
+
+    for (var i = 0; i < num - idx; i++) {
+      ret += ' ';
+    }
+
+    return ret;
   }
 
-  multiply(other: Complex) : Complex {
-    return new Complex( other.real * this.real - other.im * this.im, other.real * this.im + other.im * this.real);
+  private repeatSpace(repetition:number):string {
+    var result:string = '';
+
+    for (var i = 0; i < repetition * 2 - 1; i++) {
+      result += ' ';
+    }
+
+    return result;
   }
 
-  toString() {
-    return `(${this.real},${this.im})`;
+  public getDiamond(letter:string):string[] {
+    var lines:string[] = [];
+
+    lines.push(this.pad(letter, 0) + 'A');
+
+    for (var i = 1; i < (letter.charCodeAt(0) - 64); i++) {
+      var lineLetter = String.fromCharCode(65 + i);
+
+      lines.push(this.pad(letter, i) + lineLetter + this.repeatSpace(i) + lineLetter);
+    }
+
+    for (var i = lines.length - 2; i > -1; i--) {
+      lines.push(lines[i]);
+    }
+
+    lines.forEach((line) => {console.log(line)});
+    console.log();
+    return lines;
   }
 }
