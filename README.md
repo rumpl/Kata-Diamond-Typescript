@@ -4,7 +4,8 @@ The goal here is to implement a typescript implementation of the Diamond Kata
 
 ## Goal
 
-`Given a letter, print a diamond starting with ‘A’ with the supplied letter at the widest point.
+```
+Given a letter, print a diamond starting with ‘A’ with the supplied letter at the widest point.
 
 For example: print-diamond ‘C’ prints
 
@@ -13,7 +14,7 @@ For example: print-diamond ‘C’ prints
 C   C
  B B
   A  `
-
+```
 ## Prerequisites
 You need typescript installed:
 
